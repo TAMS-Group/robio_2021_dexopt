@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="model"/>
+  <param name="/robot_description" command="$(find xacro)/xacro --inorder '$(find dexopt)/models/$(arg model).xacro'"/>
+  <param name="/robot_description_semantic" textfile="$(find dexopt)/models/$(arg model).srdf"/>
+</launch>

@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<robot
+    xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+    xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+    xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+    xmlns:xacro="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+    name="simple_box">
+    
+    <!-- idea and easy_box borrowed from B21.xacro, <url>http://ros.org/wiki/b21_description</url>, BSD license (C) 2016 fnh, hendrich@informatik.uni-hamburg.de (c) 2020 Philipp Ruppel -->
+    <xacro:macro name="simple_box" params="name parent sx sy sz mass type:=fixed color:='1 1 1 1' *origin">
+        <material name="${name}_material">
+            <color rgba="${color}"/>
+        </material>
+        <link name="${name}">
+            <inertial>
+                <mass value="${mass}"/>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <inertia 
+                    ixx="${1.0/12*mass*(sy*sy+sz*sz)}" ixy="0" ixz="0" 
+                    iyy="${1.0/12*mass*(sx*sx+sz*sz)}" iyz="0" 
+                    izz="${1.0/12*mass*(sx*sx+sy*sy)}"
+                    />
+            </inertial>
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry>
+                    <box size="${sx} ${sy} ${sz}"/>
+                </geometry>
+                <material name="${name}_material"/>
+            </visual>
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry>
+                    <box size="${sx} ${sy} ${sz}"/>
+                </geometry>
+            </collision>
+        </link>
+        <joint name="${name}_joint" type="${type}">
+            <parent link="${parent}"/>
+            <child link="${name}"/>
+            <xacro:insert_block name="origin"/>
+        </joint>
+    </xacro:macro>
+    
+    
+    
+    <xacro:macro name="simple_cylinder" params="name parent length radius mass type:=fixed color:='1 1 1 1' *origin">
+        
+        <material name="${name}_material">
+            <color rgba="${color}"/>
+        </material>
+        
+        <material name="${name}_material_2">
+            <color rgba="0 0 0 1"/>
+        </material>
+        
+        <link name="${name}">
+            <inertial>
+                <mass value="${mass}"/>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <inertia 
+                    ixx="${1.0/12*mass*(3*radius*radius+length*length)}" ixy="0" ixz="0" 
+                    iyy="${1.0/12*mass*(3*radius*radius+length*length)}" iyz="0" 
+                    izz="${1.0/2*mass*radius*radius}"
+                    />
+            </inertial>
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry>
+                    <cylinder radius="${radius}" length="${length}"/>
+                    <!--<box size="${radius*2} ${radius*2} ${length}"/>-->
+                </geometry>
+                <material name="${name}_material"/>
+            </visual>
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry>
+                    <cylinder radius="${radius}" length="${length}"/>
+                </geometry>
+            </collision>
+        </link>
+        <joint name="${name}_joint" type="${type}">
+            <parent link="${parent}"/>
+            <child link="${name}"/>
+            <xacro:insert_block name="origin"/>
+        </joint>
+        
+        <link name="${name}_box">
+            <inertial>
+                <mass value="0"/>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <inertia 
+                    ixx="0" ixy="0" ixz="0" 
+                    iyy="0" iyz="0" 
+                    izz="0"
+                    />
+            </inertial>
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry>
+                    <box size="${radius*2} ${radius*2} ${length*0.1}"/>
+                </geometry>
+                <material name="${name}_material_2"/>
+            </visual>
+        </link>
+        <joint name="${name}_box_joint" type="fixed">
+            <parent link="${name}"/>
+            <child link="${name}_box"/>
+            <xacro:insert_block name="origin"/>
+        </joint>
+        
+    </xacro:macro>
+    
+    <xacro:macro name="invisible_cylinder" params="name parent length radius mass type:=fixed color:='1 1 1 1' *origin">
+        
+        <material name="${name}_material">
+            <color rgba="${color}"/>
+        </material>
+        
+        <material name="${name}_material_2">
+            <color rgba="0 0 0 1"/>
+        </material>
+        
+        <link name="${name}">
+            <inertial>
+                <mass value="${mass}"/>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <inertia 
+                    ixx="${1.0/12*mass*(3*radius*radius+length*length)}" ixy="0" ixz="0" 
+                    iyy="${1.0/12*mass*(3*radius*radius+length*length)}" iyz="0" 
+                    izz="${1.0/2*mass*radius*radius}"
+                    />
+            </inertial>
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry>
+                    <cylinder radius="${radius}" length="${length}"/>
+                </geometry>
+            </collision>
+        </link>
+        <joint name="${name}_joint" type="${type}">
+            <parent link="${parent}"/>
+            <child link="${name}"/>
+            <xacro:insert_block name="origin"/>
+        </joint>
+        
+    </xacro:macro>
+    
+</robot>

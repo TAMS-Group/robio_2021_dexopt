@@ -1,0 +1,255 @@
+Display:
+  Displays:
+    - Description: /robot_description
+      DoubleSided: false
+      Frame: ""
+      ImportOptions:
+        RecomputeNormals: false
+        SmoothNormals: true
+      MaterialOverride:
+        Color: false
+        Material:
+          Color:
+            B: 1.000000
+            G: 1.000000
+            R: 1.000000
+          Metallic: 0.000000
+          Normals: ""
+          Opacity: 1.000000
+          Roughness: 0.375081
+          Texture: ""
+          id: 748
+        Normals: false
+        Parameters: true
+        Texture: false
+        id: 747
+      MaxSteps: 10
+      Name: RobotTrajectoryDisplay2
+      PlayTrajectory: false
+      ShowAllStates: true
+      Speed: 1.000000
+      Topic: /move_group/display_planned_path
+      TrajectoryTime: 1.445000
+      Transform:
+        Orientation:
+          Pitch: 0.000000
+          Roll: 0.000000
+          Yaw: 0.000000
+        Position:
+          X: 0.000000
+          Y: 0.000000
+          Z: 0.000000
+      Visible: true
+      id: 746
+      type: RobotTrajectoryDisplay
+    - Brightness: 27.340000
+      Color:
+        B: 0.733011
+        G: 0.897749
+        R: 1.000000
+      Frame: ""
+      Name: DirectionalLight2
+      ShadowBias: 1.000000
+      ShadowDepth: 1.000000
+      ShadowEnable: true
+      ShadowWidth: 0.510000
+      Transform:
+        Orientation:
+          Pitch: 421.650000
+          Roll: 0.000000
+          Yaw: -34.200000
+        Position:
+          X: -0.445000
+          Y: 0.010000
+          Z: 0.220000
+      ViewSpace: false
+      Visible: true
+      id: 764
+      type: DirectionalLight
+    - MaterialOverride:
+        Color: false
+        Material:
+          Color:
+            B: 0.800000
+            G: 0.800000
+            R: 0.800000
+          Metallic: 0.000000
+          Normals: ""
+          Opacity: 1.000000
+          Roughness: 0.400000
+          Texture: ""
+          id: 70333
+        Normals: false
+        Parameters: false
+        Texture: false
+        id: 70332
+      Name: MarkerArrayDisplay2
+      Topic: /tractor/visualization
+      Visible: false
+      id: 70331
+      type: MarkerArrayDisplay
+    - Frame: ""
+      Material:
+        Color:
+          B: 0.400000
+          G: 0.400000
+          R: 0.400000
+        Metallic: 0.000000
+        Normals: ""
+        Opacity: 1.000000
+        Roughness: 0.322679
+        Texture: ""
+        id: 70669
+      Name: PlaneDisplay1
+      Size:
+        X: 1000.000000
+        Y: 1000.000000
+      Transform:
+        Orientation:
+          Pitch: 0.000000
+          Roll: 0.000000
+          Yaw: 0.000000
+        Position:
+          X: 0.000000
+          Y: 0.000000
+          Z: 0.000000
+      Visible: true
+      id: 70668
+      type: PlaneDisplay
+    - Description: /robot_description
+      DoubleSided: false
+      Frame: ""
+      ImportOptions:
+        RecomputeNormals: false
+        SmoothNormals: true
+      MaterialOverride:
+        Color: false
+        Material:
+          Color:
+            B: 0.800000
+            G: 0.800000
+            R: 0.800000
+          Metallic: 0.000000
+          Normals: ""
+          Opacity: 1.000000
+          Roughness: 0.384647
+          Texture: ""
+          id: 70777
+        Normals: false
+        Parameters: false
+        Texture: false
+        id: 70776
+      Name: RobotStateDisplay1
+      Topic: /joint_states
+      Transform:
+        Orientation:
+          Pitch: 0.000000
+          Roll: 0.000000
+          Yaw: 0.000000
+        Position:
+          X: 0.000000
+          Y: 0.000000
+          Z: 0.000000
+      Visible: false
+      id: 70775
+      type: RobotStateDisplay
+    - DescriptionColor:
+        B: 1.000000
+        G: 1.000000
+        R: 1.000000
+      DescriptionOffset:
+        X: 0.000000
+        Y: 0.850000
+      DescriptionOpacity: 1.000000
+      DescriptionSize: 0.200000
+      Name: InteractiveMarkerDisplay1
+      ShowDescriptions: true
+      TopicNamespace: /interactive_markers
+      Visible: false
+      id: 75321
+      type: InteractiveMarkerDisplay
+    - Description: /robot_description
+      DoubleSided: false
+      Frame: ""
+      ImportOptions:
+        RecomputeNormals: false
+        SmoothNormals: false
+      MaterialOverride:
+        Color: false
+        Material:
+          Color:
+            B: 0.800000
+            G: 0.800000
+            R: 0.800000
+          Metallic: 0.000000
+          Normals: ""
+          Opacity: 1.000000
+          Roughness: 0.400000
+          Texture: ""
+          id: 77220
+        Normals: false
+        Parameters: false
+        Texture: false
+        id: 77219
+      Name: RobotStateDisplay2
+      Topic: /joint_states
+      Transform:
+        Orientation:
+          Pitch: 0.000000
+          Roll: 0.000000
+          Yaw: 0.000000
+        Position:
+          X: 0.000000
+          Y: 0.000000
+          Z: 0.000000
+      Visible: false
+      id: 77218
+      type: RobotStateDisplay
+  Environment:
+    AmbientLighting: 1.000000
+    BackgroundBrightness: 3.265000
+    BackgroundColor:
+      A: 1.000000
+      B: 1.000000
+      G: 1.000000
+      R: 1.000000
+    EnvironmentMap: package://tamsviz_media/environments/the_lost_city.jpg
+    GroundColor:
+      B: 0.000000
+      G: 0.000000
+      R: 0.000000
+    HemisphericLighting: 1.000000
+    UseEnvironmentMap: true
+    id: 30
+    type: EnvironmentComponent
+  FixedFrame: base_frame
+  Name: Document
+  Rendering:
+    BlackLevel: 0.000000
+    Exposure: 1.000000
+    MultiSampling: 4
+    SampleShading: 1
+    ShadowCubeResolution: 512
+    ShadowMapResolution: 4096
+    ToneMapping: true
+    WhiteLevel: 1.000000
+    id: 77222
+    type: RenderingComponent
+  id: 8
+Timeline:
+  Tracks:
+    []
+  id: 7
+Window:
+  Name: Window
+  ViewPosition:
+    X: 0.144517
+    Y: -0.283623
+    Z: 0.220132
+  ViewTarget:
+    X: 0.033647
+    Y: 0.042985
+    Z: 0.060614
+  id: 9
+  type: SceneWindow
+id: 6

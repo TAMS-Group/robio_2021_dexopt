@@ -1,5 +1,9 @@
-# Direct Policy Optimization with Differentiable Physical Consistency for Dexterous Manipulation - Source Code - ROBIO 2021
+### Experimental research code used in our ROBIO 2021 paper
 
-This repository is currently just a placeholder while our paper is under review. We plan to upload our research code once the paper is (hopefully) accepted for publication.
+## Direct Policy Optimization with Differentiable Physical Consistency for Dexterous Manipulation 
 
-If you are a reviewer and want to access the code, please contact the paper authors by e-mail. You can do so anonymously (or possibly via the editor) for blind review. 
+![](visualization/screenshot.jpg)
+
+#### Dependencies
+- TAMSVIZ https://github.com/TAMS-Group/tamsviz
+- Shadow and UR robot models
