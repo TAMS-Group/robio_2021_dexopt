@@ -26,10 +26,10 @@ Display:
       MaxSteps: 10
       Name: RobotTrajectoryDisplay2
       PlayTrajectory: false
-      ShowAllStates: true
+      ShowAllStates: false
       Speed: 1.000000
       Topic: /move_group/display_planned_path
-      TrajectoryTime: 1.445000
+      TrajectoryTime: 2.730000
       Transform:
         Orientation:
           Pitch: 0.000000
@@ -243,13 +243,13 @@ Timeline:
 Window:
   Name: Window
   ViewPosition:
-    X: 0.144517
-    Y: -0.283623
-    Z: 0.220132
+    X: 0.089887
+    Y: -0.178939
+    Z: 0.193439
   ViewTarget:
-    X: 0.033647
-    Y: 0.042985
-    Z: 0.060614
+    X: 0.013685
+    Y: 0.009664
+    Z: 0.067218
   id: 9
   type: SceneWindow
 id: 6

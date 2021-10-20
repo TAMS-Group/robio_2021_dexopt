@@ -232,10 +232,10 @@ template <class ValueSingle, class ValueBatch> class DexLearn {
     }
   }
 
-  void
-  _evaluateContact(const std::string &end_effector_name,
-                   const std::string &object_name,
-                   const tractor::Tensor<ScalarBatch> &contact_parameters) {
+  void _evaluateContact(const std::string &end_effector_name,
+                        const std::string &object_name,
+                        const tractor::Tensor<ScalarBatch> &contact_parameters,
+                        size_t end_effector_index) {
 
     auto object_pose = _simulator->state().links().pose(object_name);
     auto object_orientation = GeometryBatch::orientation(object_pose);
@@ -335,9 +335,9 @@ template <class ValueSingle, class ValueBatch> class DexLearn {
             ValueBatch(_env->info().friction_cone_penalty));
       }
 
-      _viz.visualizeContact(indexBatch(value(contact_point_1), 0),
-                            indexBatch(value(contact_normal), 0),
-                            indexBatch(value(contact_force), 0), 0);
+      //   _viz.visualizeContact(indexBatch(value(contact_point_1), 0),
+      //                         indexBatch(value(contact_normal), 0),
+      //                         indexBatch(value(contact_force), 0), 0);
     }
 
     // friction cone penalty
@@ -358,10 +358,15 @@ template <class ValueSingle, class ValueBatch> class DexLearn {
             ValueBatch(_env->info().friction_cone_penalty));
       }
 
-      _viz.visualizeContact(indexBatch(value(contact_point_2), 0),
-                            indexBatch(value(contact_normal), 0),
-                            indexBatch(value(contact_force), 0), 1);
+      //   _viz.visualizeContact(indexBatch(value(contact_point_2), 0),
+      //                         indexBatch(value(contact_normal), 0),
+      //                         indexBatch(value(contact_force), 0), 1);
     }
+
+    _viz.visualizeContact(
+        indexBatch(value(contact_point_1) + value(contact_point_2), 0) * 0.5,
+        value(GeometrySingle::Vector3Zero()),
+        indexBatch(value(contact_force), 0), end_effector_index);
 
     if (_env->info().contact_distance_penalty) {
       auto d = (contact_point_2 - contact_point_1) *
@@ -409,7 +414,8 @@ template <class ValueSingle, class ValueBatch> class DexLearn {
         tractor::Tensor<ScalarBatch> contact_parameters = policy_output.range(
             _joint_names.size() + end_effector_index * _contact_dimensions,
             _contact_dimensions);
-        _evaluateContact(end_effector_name, "object", contact_parameters);
+        _evaluateContact(end_effector_name, "object", contact_parameters,
+                         end_effector_index);
       }
       _applyCollisionPenalties();
     }

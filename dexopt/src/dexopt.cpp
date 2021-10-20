@@ -34,17 +34,13 @@ int main(int argc, char **argv) {
           std::make_shared<tractor::DexEnvPush<ValueSingle, ValueBatch>>(),
       };
 
-  if (argc < 3) {
-    std::cerr << "USAGE: dexopt <env> <command> [<solver>]" << std::endl;
+  if (argc < 4) {
+    std::cerr << "USAGE: dexopt <env> <command> <solver>" << std::endl;
     return -1;
   }
   std::string envname = argv[1];
   std::string command = argv[2];
-
-  std::string solvername = "sq";
-  if (argc > 3) {
-    solvername = argv[3];
-  }
+  std::string solvername = argv[3];
 
   ros::WallDuration training_time(60 * 5);
 
@@ -157,6 +153,16 @@ int main(int argc, char **argv) {
   if (solvername == "sq") {
     auto s = std::make_shared<tractor::LeastSquaresSolver<ValueSingle>>(engine);
     s->_regularization = 0.1;
+    s->_max_linear_iterations = 100;
+    s->_step_scaling = 0.5;
+    s->setTimeout(1, false);
+    s->setTolerance(1e-9);
+    solver = s;
+  } else
+
+      if (solvername == "sq001") {
+    auto s = std::make_shared<tractor::LeastSquaresSolver<ValueSingle>>(engine);
+    s->_regularization = 0.01;
     s->_max_linear_iterations = 100;
     s->_step_scaling = 0.5;
     s->setTimeout(1, false);
@@ -300,7 +306,7 @@ int main(int argc, char **argv) {
         [&](tractor::PhysicsSimulator<GeometryBatch> &simulator) {
 
           auto pose = GeometryBatch::import(
-              object_marker.initialPose().inverse() * object_marker.pose());
+              /*object_marker.initialPose().inverse() **/ object_marker.pose());
 
           simulator.setBodyPose("object", pose);
 
