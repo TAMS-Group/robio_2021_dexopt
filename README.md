@@ -7,3 +7,18 @@
 #### Dependencies
 - TAMSVIZ https://github.com/TAMS-Group/tamsviz
 - Shadow and UR robot models
+
+#### Citation
+
+```
+@INPROCEEDINGS{dexopt,
+  author={Ruppel, Philipp and Hendrich, Norman and Zhang, Jianwei},
+  booktitle={2021 IEEE International Conference on Robotics and Biomimetics (ROBIO)},
+  title={Direct Policy Optimization with Differentiable Physical Consistency for Dexterous Manipulation},
+  year={2021},
+  volume={},
+  number={},
+  pages={650-655},
+  doi={10.1109/ROBIO54168.2021.9739435}
+}
+```
