@@ -8,6 +8,10 @@
 - TAMSVIZ https://github.com/TAMS-Group/tamsviz
 - Shadow and UR robot models
 
+#### Paper
+
+[Direct Policy Optimization with Differentiable Physical Consistency for Dexterous Manipulation](https://ieeexplore.ieee.org/document/9739435)
+
 #### Citation
 
 ```
