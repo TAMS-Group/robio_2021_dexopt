@@ -1,10 +1,14 @@
+cmake_minimum_required(VERSION 3.1)
+
 project(dexopt)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -std=c++17 -O3 -mavx -U__AVX__")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O3 -mavx -U__AVX__")
+set(CMAKE_CXX_STANDARD 17)
 
 find_package(OpenCV REQUIRED)
 
 find_package(catkin REQUIRED COMPONENTS
+  eigen_conversions
   roscpp
   tractor
   moveit_ros_planning

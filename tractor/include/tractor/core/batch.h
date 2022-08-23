@@ -3,6 +3,7 @@
 #pragma once
 
 #include <Eigen/Dense>
+#include <immintrin.h> // for __m256
 #include <cstdint>
 
 namespace tractor {
